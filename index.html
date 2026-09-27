@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hardik's Quiz</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#050711;color:#eef7ff;font-family:Arial,sans-serif}
+nav{position:sticky;top:0;background:#080b16ee;padding:16px;display:flex;justify-content:space-between;align-items:center;z-index:2;border-bottom:1px solid #24304a;backdrop-filter:blur(8px)}
+.logo{color:#00eaff;font-weight:900;font-size:20px;cursor:pointer;text-shadow:0 0 14px #00eaff66}
+.nav button,.btn{display:inline-block;text-decoration:none;background:#10192c;color:#00eaff;border:1px solid #00eaff66;padding:10px 14px;border-radius:9px;margin:3px;font-weight:700;cursor:pointer;transition:.2s}
+.nav button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 0 16px #00eaff33}
+.primary{background:#006dff;color:#fff;border-color:#3390ff}
+.wrap{max-width:1050px;margin:auto;padding:30px 18px}
+.page{display:none}.page.active{display:block}
+.hero{text-align:center;padding:80px 10px}
+.hero h1{font-size:clamp(45px,9vw,85px);margin:20px 0;color:#00eaff;text-shadow:0 0 28px #00eaff55}
+.hero p,.sub,.card p{color:#91a1b7;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card,.quiz{background:#0c1324;border:1px solid #263654;border-radius:16px;padding:22px;transition:.2s}
+.card:hover{border-color:#00eaff;transform:translateY(-3px)}
+.card h2{margin-top:0}
+.q{font-size:23px;font-weight:800;margin:25px 0}
+.answers{display:grid;gap:10px}
+.answer{padding:15px;background:#101a2e;color:#fff;border:1px solid #263654;border-radius:10px;text-align:left;font-weight:700;cursor:pointer;transition:.2s}
+.answer:hover:not(:disabled){border-color:#00eaff;transform:translateX(2px)}
+.correct{border-color:#5cff9d!important;background:#143a2a!important}
+.wrong{border-color:#ff5470!important;background:#3a1420!important}
+.progress{height:7px;background:#172238;border-radius:20px;overflow:hidden;margin-top:10px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#00eaff,#ff2bd6);transition:.3s}
+table{width:100%;border-collapse:collapse;background:#0c1324}th,td{padding:14px;border-bottom:1px solid #263654;text-align:left}th{color:#00eaff}
+.score{font-size:65px;color:#00eaff;font-weight:900;text-shadow:0 0 20px #00eaff55}
+.badge{display:inline-block;font-size:12px;padding:5px 8px;border:1px solid #00eaff55;border-radius:999px;color:#00eaff;margin-bottom:10px}
+footer{text-align:center;color:#65758c;padding:30px;border-top:1px solid #1b263d;margin-top:30px}
+@media(max-width:650px){nav{gap:8px;flex-direction:column;align-items:stretch}.hero{padding:55px 5px}.nav{text-align:center}.q{font-size:20px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo" onclick="page('home')">HARDIK'S QUIZ ⚡</div>
+  <div class="nav">
+    <button onclick="page('home')">HOME</button>
+    <button onclick="page('quizzes')">QUIZZES</button>
+    <button onclick="page('leaderboard')">LEADERBOARD</button>
+    <button onclick="page('about')">ABOUT</button>
+  </div>
+</nav>
+
+<main class="wrap">
+<section id="home" class="page active">
+  <div class="hero">
+    <div>FUTURE • GAMING • CHALLENGE</div>
+    <h1>TEST YOUR<br>KNOWLEDGE</h1>
+    <p>Welcome to Hardik's Quiz — your futuristic quiz hub.</p>
+    <button class="btn primary" onclick="page('quizzes')">🎮 START PLAYING</button>
+    <button class="btn" onclick="page('leaderboard')">🏆 LEADERBOARD</button>
+  </div>
+  <div class="grid">
+    <div class="card"><h2>🎮 QUIZ HUB</h2><p>Choose from school, science, and general knowledge challenges.</p></div>
+    <div class="card"><h2>🏆 30 QUESTIONS</h2><p>Three categories with ten questions each.</p></div>
+    <div class="card"><h2>🚀 RANDOMIZED</h2><p>Answer choices shuffle on every question.</p></div>
+  </div>
+</section>
+
+<section id="quizzes" class="page">
+  <h1>🎮 QUIZ HUB</h1>
+  <p class="sub">Choose a challenge — 10 questions per category.</p>
+  <div class="grid">
+    <div class="card">
+      <span class="badge">10 QUESTIONS</span>
+      <h2>🏫 CAS SCHOOL QUIZ</h2>
+      <p>Class 8 school facts and CAS knowledge.</p>
+      <a class="btn primary" href="school.html">PLAY NOW →</a>
+    </div>
+    <div class="card">
+      <span class="badge">10 QUESTIONS</span>
+      <h2>🔬 SCIENCE BLAST</h2>
+      <p>Science basics from the world around you.</p>
+      <a class="btn primary" href="science.html">PLAY NOW →</a>
+    </div>
+    <div class="card">
+      <span class="badge">10 QUESTIONS</span>
+      <h2>🌍 GENERAL KNOWLEDGE</h2>
+      <p>Quick-fire GK on India and the world.</p>
+      <a class="btn primary" href="gk.html">PLAY NOW →</a>
+    </div>
+    <div class="card">
+      <span class="badge">10 QUESTIONS</span>
+      <h2>🇮🇳 INDIA QUIZ</h2>
+      <p>Test your knowledge about India, its history, culture and geography.</p>
+      <a class="btn primary" href="india.html">PLAY NOW →</a>
+    </div>
+    <div class="card">
+      <span class="badge">10 QUESTIONS</span>
+      <h2>🧠 IMPOSSIBLE QUIZ</h2>
+      <p>Questions with no simple exact answer. Test the limits of what can be known.</p>
+      <a class="btn primary" href="impossible.html">PLAY NOW →</a>
+    </div>
+  </div>
+  <div id="game"></div>
+</section>
+
+<section id="leaderboard" class="page">
+  <h1>🏆 LEADERBOARD</h1>
+  <p class="sub">Demo leaderboard.</p>
+  <table>
+    <tr><th>#</th><th>PLAYER</th><th>SCORE</th></tr>
+    <tr><td>1</td><td>HARDIK</td><td>—</td></tr>
+    <tr><td>2</td><td>PLAYER 2</td><td>—</td></tr>
+    <tr><td>3</td><td>PLAYER 3</td><td>—</td></tr>
+  </table>
+</section>
+
+<section id="about" class="page">
+  <h1>ℹ️ ABOUT</h1>
+  <div class="grid">
+    <div class="card"><h2>Gaming UI</h2><p>Futuristic interface with quiz HUD styling.</p></div>
+    <div class="card"><h2>Smart Answers</h2><p>Answer choices are randomized every question.</p></div>
+    <div class="card"><h2>30-Question Hub</h2><p>Three categories, ten questions each.</p></div>
+  </div>
+</section>
+</main>
+<footer>HARDIK'S QUIZ • FUTURE GAMING CHALLENGE</footer>
+
+<script>
+const categories = {
+  cas: {
+    title:'🏫 CAS SCHOOL QUIZ',
+    qs:[
+      ['Where is CAS School?',['Umaria','Shahdol','Delhi','Maanpur'],'Umaria'],
+      ['Who is the class teacher of Class 8th?', ["Vijaya Parihar Ma'am","Payal Agarwal Ma'am",'Moin Sir','Hanif Sir'],"Vijaya Parihar Ma'am"],
+      ['Who is the subject teacher of Science in Class 8?', ["Poonam Ma'am","Payal Ma'am","Aarti Pandey Ma'am",'Hanif Sir'],"Aarti Pandey Ma'am"],
+      ['How many students are in Class Section B?',['25','31','26','27'],'27'],
+      ['Who is the principal of CAS School?', ["Pyle Ma'am","Nukur Ma'am","Sonia Mishra Ma'am","Aarti Pandey Ma'am"],"Sonia Mishra Ma'am"],
+      ['Which class is this school quiz designed around?',['Class 6','Class 7','Class 8','Class 9'],'Class 8'],
+      ['Which subject is taught by Aarti Pandey Ma’am in this quiz?',['English','Science','Mathematics','Social Science'],'Science'],
+      ['Which location is associated with CAS School in this quiz?',['Bhopal','Indore','Umaria','Jabalpur'],'Umaria'],
+      ['Which person is listed as the Class 8 class teacher?',["Vijaya Parihar Ma'am","Sonia Mishra Ma'am","Aarti Pandey Ma'am","Payal Agarwal Ma'am"],"Vijaya Parihar Ma'am"],
+      ['Which person is listed as the principal?',["Nukur Ma'am","Sonia Mishra Ma'am","Poonam Ma'am","Vijaya Parihar Ma'am"],"Sonia Mishra Ma'am"]
+    ]
+  },
+  science: {
+    title:'🔬 SCIENCE BLAST',
+    qs:[
+      ['Which organ pumps blood around the human body?',['Lungs','Heart','Kidneys','Brain'],'Heart'],
+      ['Which gas do plants mainly use during photosynthesis?',['Oxygen','Nitrogen','Carbon dioxide','Hydrogen'],'Carbon dioxide'],
+      ['Which force pulls objects toward Earth?',['Friction','Magnetism','Gravity','Buoyancy'],'Gravity'],
+      ['Which state of matter has a fixed volume but no fixed shape?',['Solid','Liquid','Gas','Plasma'],'Liquid'],
+      ['What is the SI unit of electric current?',['Volt','Watt','Ampere','Ohm'],'Ampere'],
+      ['Which part of a plant usually absorbs water from soil?',['Leaves','Flowers','Roots','Fruits'],'Roots'],
+      ['Which planet is famous for its prominent rings?',['Mars','Venus','Saturn','Mercury'],'Saturn'],
+      ['What happens to most substances when heated?',['They shrink','They expand','They disappear','They freeze'],'They expand'],
+      ['Which material is generally a good conductor of electricity?',['Rubber','Wood','Copper','Plastic'],'Copper'],
+      ['What is the main source of energy for Earth?',['The Moon','The Sun','The wind','The oceans'],'The Sun']
+    ]
+  },
+  gk: {
+    title:'🌍 GENERAL KNOWLEDGE',
+    qs:[
+      ['What is the capital of India?',['Mumbai','New Delhi','Kolkata','Chennai'],'New Delhi'],
+      ['Which is the largest ocean on Earth?',['Atlantic Ocean','Indian Ocean','Pacific Ocean','Arctic Ocean'],'Pacific Ocean'],
+      ['How many continents are there on Earth?',['5','6','7','8'],'7'],
+      ['Which country is known as the Land of the Rising Sun?',['China','Japan','Thailand','South Korea'],'Japan'],
+      ['Who wrote the Indian national anthem?',['Bankim Chandra Chattopadhyay','Rabindranath Tagore','Sarojini Naidu','Subhas Chandra Bose'],'Rabindranath Tagore'],
+      ['Which is the smallest planet in our solar system?',['Mars','Mercury','Venus','Earth'],'Mercury'],
+      ['Which is the longest river in India?',['Yamuna','Godavari','Ganga','Narmada'],'Ganga'],
+      ['How many players are on the field for one cricket team at a time?',['9','10','11','12'],'11'],
+      ['Which currency is used in Japan?',['Won','Yuan','Yen','Dollar'],'Yen'],
+      ['Which instrument is used to measure temperature?',['Barometer','Thermometer','Hygrometer','Anemometer'],'Thermometer']
+    ]
+  }
+  ,india: {
+    title:'🇮🇳 INDIA QUIZ',
+    qs:[
+      ['What is the capital of India?',['New Delhi','Mumbai','Jaipur','Lucknow'],'New Delhi'],
+      ['Which is the national animal of India?',['Lion','Bengal Tiger','Elephant','Leopard'],'Bengal Tiger'],
+      ['Which is the national flower of India?',['Rose','Lotus','Sunflower','Marigold'],'Lotus'],
+      ['Which river is known as the longest river in India?',['Yamuna','Ganga','Narmada','Godavari'],'Ganga'],
+      ['Which Indian state is famous for the Kaziranga National Park?',['Assam','Kerala','Gujarat','Odisha'],'Assam'],
+      ['Who was the first Prime Minister of independent India?',['Sardar Vallabhbhai Patel','Jawaharlal Nehru','Rajendra Prasad','B. R. Ambedkar'],'Jawaharlal Nehru'],
+      ['Which city is known as the Pink City of India?',['Udaipur','Jaipur','Jodhpur','Bikaner'],'Jaipur'],
+      ['What is the currency of India?',['Rupee','Taka','Riyal','Dinar'],'Rupee'],
+      ['Which monument was built by Shah Jahan in Agra?',['Qutub Minar','Red Fort','Taj Mahal','Gateway of India'],'Taj Mahal'],
+      ['How many states are there in India?',['26','27','28','29'],'28']
+    ]
+  }
+};
+
+let currentQuiz=null, i=0, s=0, lock=0;
+
+function page(id){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  scrollTo(0,0);
+}
+
+function sh(a){return [...a].sort(()=>Math.random()-.5)}
+
+function startQuiz(key){
+  currentQuiz=categories[key];
+  i=0;
+  s=0;
+  lock=0;
+  render();
+}
+
+function esc(v){
+  return v.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function render(){
+  const x=currentQuiz.qs[i];
+  const a=sh(x[1]);
+  const pct=(i/currentQuiz.qs.length)*100;
+  document.getElementById('game').innerHTML=`
+    <div class="quiz">
+      <small>${currentQuiz.title} • QUESTION ${i+1} / ${currentQuiz.qs.length} • SCORE: ${s}</small>
+      <div class="progress"><i style="width:${pct}%"></i></div>
+      <div class="q">${esc(x[0])}</div>
+      <div class="answers">
+        ${a.map(v=>`<button class="answer" data-answer="${esc(v)}" type="button">${esc(v)}</button>`).join('')}
+      </div>
+      <p id="fb"></p>
+      <button id="next" class="btn primary" style="display:none" onclick="next()">${i===currentQuiz.qs.length-1?'RESULT':'NEXT ▶'}</button>
+      <button class="btn" onclick="page('quizzes')">← QUIZ HUB</button>
+    </div>`;
+  page('quizzes');
+  document.querySelectorAll('#game .answer').forEach(btn=>{
+    btn.addEventListener('click',()=>choose(btn,btn.dataset.answer));
+  });
+}
+
+function choose(b,v){
+  if(lock)return;
+  lock=1;
+  document.querySelectorAll('#game .answer').forEach(x=>x.disabled=true);
+  const correct=currentQuiz.qs[i][2];
+  const fb=document.getElementById('fb');
+  if(v===correct){
+    s++;
+    b.classList.add('correct');
+    fb.textContent='✓ CORRECT';
+    fb.style.color='#5cff9d';
+  }else{
+    b.classList.add('wrong');
+    document.querySelectorAll('#game .answer').forEach(x=>{if(x.dataset.answer===correct)x.classList.add('correct')});
+    fb.textContent='✕ WRONG';
+    fb.style.color='#ff8297';
+  }
+  document.getElementById('next').style.display='inline-block';
+  setTimeout(()=>{
+    i++; lock=0;
+    i<currentQuiz.qs.length ? render() : finish();
+  },700);
+}
+
+function next(){
+  lock=0;
+  i++;
+  if(i<currentQuiz.qs.length)render();
+  else finish();
+}
+
+function finish(){
+  const total=currentQuiz.qs.length;
+  const perfect=s===total;
+  document.getElementById('game').innerHTML=`
+    <div class="quiz" style="text-align:center">
+      <h1>QUIZ COMPLETE</h1>
+      <div class="score">${s} / ${total}</div>
+      <p class="sub">${perfect?'PERFECT RUN! 🔥':s>=7?'GREAT JOB! ⚡':'KEEP TRAINING! 🚀'}</p>
+      <button class="btn primary" onclick="startQuizByCurrent()">↻ PLAY AGAIN</button>
+      <button class="btn" onclick="page('quizzes')">🎮 QUIZ HUB</button>
+      <button class="btn" onclick="page('home')">⌂ HOME</button>
+    </div>`;
+}
+
+function startQuizByCurrent(){
+  const key=Object.keys(categories).find(k=>categories[k]===currentQuiz);
+  startQuiz(key);
+}
+</script>
+</body>
+</html>
